@@ -1,0 +1,17 @@
+body {
+    background-color: #1e1e1e; /* Dark background color */
+    color: #f0f0f0; /* Light text color */
+    font-family: Arial, sans-serif; /* Font similar to ChatGPT */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #f0f0f0; /* Light text color for headings */
+}
+
+a {
+    color: #8da6ff; /* Link color */
+}
+
+a:hover {
+    color: #6d90ff; /* Link color on hover */
+}

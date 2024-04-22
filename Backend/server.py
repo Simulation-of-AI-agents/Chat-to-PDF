@@ -24,6 +24,10 @@ def home():
     upload_form = UploadFileForm()
     search_form = SearchForm()
     
+    pdf_directory = './Backend/static/css/files'
+    pdf_files = [f for f in os.listdir(pdf_directory) if f.endswith('.pdf')]
+    pdf_files = pdf_files[:3]
+    
     # Dateiupload
     if request.method == 'POST' and 'file' in request.files:
         if upload_form.validate_on_submit():
@@ -39,7 +43,7 @@ def home():
         file_list = os.listdir(app.config['UPLOAD_FOLDER'])
         files = [file for file in file_list if query in file.lower()]
         
-    return render_template('index.html', upload_form=upload_form, search_form=search_form, files=files)
+    return render_template('index.html', upload_form=upload_form, search_form=search_form, files=files, pdf_files=pdf_files)
 
 # Funktion zum Herunterladen von Dateien
 @app.route('/files/<filename>')

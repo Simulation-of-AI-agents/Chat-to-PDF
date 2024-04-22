@@ -1,4 +1,18 @@
-.container {
+.pdf-cover-container {
+    position: relative;
+    width: 210px; /* oder die Breite Ihres Bildes */
+    height: 297px; /* oder die Höhe Ihres Bildes */
+}
+
+.pdf-cover {
+    display: block;
     width: 100%;
-    height: 100%; 
+    height: auto;
+    pointer-events: none; /* Deaktiviert Mausereignisse auf dem Bild */
+}
+
+.overlay-link {
+    position: absolute;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0); /* Transparent */
 }

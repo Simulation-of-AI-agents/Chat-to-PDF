@@ -11,6 +11,13 @@
 <body>
     <h1>File Upload and Search</h1>
 
+    <div class="pdf-container">
+        {% for pdf in pdf_files %}
+            <embed src="{{ url_for('static', filename='css/files/' ~ pdf) }}" width="210" height="297" type="application/pdf">
+            <a href="http://google.com" class="overlay-link" style="top: 50%; left: 50%; width: 50%; height: 50%;"></a>
+        {% endfor %}
+    </div>
+
     <!-- Formular zum Hochladen von Dateien -->
     <form method="POST" enctype="multipart/form-data">
         {{ upload_form.hidden_tag() }}

@@ -33,6 +33,7 @@ def home():
     files = []
     if request.method == 'POST':
         if upload_form.validate_on_submit() and 'file' in request.files:
+
             file = upload_form.file.data
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)

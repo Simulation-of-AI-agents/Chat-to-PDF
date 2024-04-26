@@ -11,6 +11,8 @@ app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = 'Backend/static/css/files'
 app.config['COVER_FOLDER'] = 'Backend/static/css/covers'
 
+
+
 # Erstellen der Upload- und Suchformulare
 class UploadFileForm(FlaskForm):
     file = FileField("File", validators=[])

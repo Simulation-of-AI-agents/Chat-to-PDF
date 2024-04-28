@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
     <title>File Upload and Search</title>
 </head>
 <body>
@@ -31,16 +32,18 @@
         <p>No results found.</p>
     {% endif %}
 
-    <div class="gallery">
-        {% for img, pdf in images_to_pdfs.items() %}
-        <!-- Verwende 'show_pdf' als Route und entferne '.pdf' für den korrekten Funktionsaufruf -->
-        <a href="{{ url_for('show_pdf', file_name=pdf.replace('.pdf', '')) }}" class="image-button">
-            <!-- Stelle sicher, dass der Pfad und die Dateinamen korrekt sind -->
-            <img src="{{ url_for('static', filename='css/covers/' + img) }}" alt="Cover image of {{ pdf }}" width="300" height="400">
-        </a>
-
-        {% endfor %}
+    <!-- Container für die Galerie mit horizontaler Scrollbar -->
+    <div class="gallery-container">
+        <div class="gallery">
+            {% for img, pdf in images_to_pdfs.items() %}
+                <a href="{{ url_for('show_pdf', file_name=pdf.replace('.pdf', '')) }}" class="image-button">
+                    <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}" style="height: 600px; width: 400px;">
+                </a>
+            {% endfor %}
+        </div>
     </div>
+
+    
 
     <!-- Formular zum Hochladen von Dateien -->
     <form method="POST" enctype="multipart/form-data">

@@ -16,3 +16,21 @@
     z-index: 1;
     background: rgba(255, 255, 255, 0); /* Transparent */
 }
+
+.gallery-container {
+    overflow-x: auto; /* Ermöglicht horizontales Scrollen */
+    white-space: nowrap; /* Verhindert Umbrüche der Elemente */
+    padding: 10px; /* Optional: Fügt etwas Abstand im Inneren des Containers hinzu */
+    width: 100%; /* Breite des Containers auf volle Breite des Elternelements */
+}
+
+.image-button {
+    display: inline-block; /* Anzeige in einer Reihe */
+    margin-right: 10px; /* Abstand zwischen den Bildern */
+}
+
+.image-button img {
+    height: 300px; /* Höhe der Bilder festlegen */
+    width: 200px; /* Breite der Bilder festlegen */
+    object-fit: cover; /* Stellt sicher, dass das Bild die Dimensionen füllt, ohne verzerrt zu werden */
+}

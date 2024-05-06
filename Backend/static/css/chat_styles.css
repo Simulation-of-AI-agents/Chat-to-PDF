@@ -1,0 +1,34 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Setzt die Höhe auf die Höhe des Viewports */
+    overflow: hidden; /* Verhindert Scrollen auf der gesamten Seite */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.header {
+    padding: 20px;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden; 
+    margin-bottom: 20px;
+}
+
+.PDF-view {
+    width: 45%;
+    height: calc(100% - 20px); /* Berechnet die Höhe, subtrahiert 20px vom Boden */
+    border: none;
+    margin-bottom: 20px; /* Fügt einen unteren Rand hinzu */
+}
+

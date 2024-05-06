@@ -36,12 +36,21 @@
     <div class="gallery-container">
         <div class="gallery">
             {% for img, pdf in images_to_pdfs.items() %}
-                <a href="{{ url_for('show_pdf', file_name=pdf.replace('.pdf', '')) }}" class="image-button">
-                    <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}" style="height: 600px; width: 400px;">
-                </a>
+                <div class="image-container">
+                    <a href="{{ url_for('show_pdf', file_name=pdf.replace('.pdf', '')) }}" class="image-button">
+                        <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}" style="height: 300px; width: 200px;">
+                    </a>
+                    <!-- Löschen-Button über dem Bild -->
+                    <button class="delete-button" data-file-name="{{ pdf.replace('.pdf', '') }}">Delete</button>
+                </div>
             {% endfor %}
         </div>
     </div>
+
+    <!-- JQuery einbinden -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Einbinden Ihrer externen script.js Datei -->
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 
     <!-- Formular zum Hochladen von Dateien -->
     <form method="POST" enctype="multipart/form-data">

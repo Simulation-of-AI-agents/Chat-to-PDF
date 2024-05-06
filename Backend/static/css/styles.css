@@ -1,14 +1,29 @@
-.pdf-cover-container {
-    position: relative;
-    width: 210px; /* oder die Breite Ihres Bildes */
-    height: 297px; /* oder die Höhe Ihres Bildes */
+body {
+    display: grid;
+    font-family: monospace;
+    place-items: center; /* Zentriert Inhalte sowohl horizontal als auch vertikal */
+    min-height: 100vh; /* Minimale Höhe auf 100% des Viewport */
+    margin: 0; /* Entfernt den Standardrand */
+    background-color: #3c3c3c;
+    color: rgb(187, 187, 187);
+  } 
+
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(187, 187, 187);
 }
 
-.pdf-cover {
-    display: block;
-    width: 100%;
-    height: auto;
-    pointer-events: none; /* Deaktiviert Mausereignisse auf dem Bild */
+h1 {
+    font-size: 60px;
+}
+
+a {
+    color: rgb(187, 187, 187);/* Setzt die Textfarbe auf Weiß */
+    text-decoration: none; /* Entfernt die Unterstreichung */
+}
+
+a:hover {
+    color: lightgray; /* Farbe beim Überfahren mit der Maus ändern */
+    text-decoration: underline; /* Unterstreichung beim Hover hinzufügen */
 }
 
 .overlay-link {
@@ -21,16 +36,38 @@
     overflow-x: auto; /* Ermöglicht horizontales Scrollen */
     white-space: nowrap; /* Verhindert Umbrüche der Elemente */
     padding: 10px; /* Optional: Fügt etwas Abstand im Inneren des Containers hinzu */
-    width: 100%; /* Breite des Containers auf volle Breite des Elternelements */
+    width: 80%; /* Breite des Containers auf volle Breite des Elternelements */
 }
 
 .image-button {
     display: inline-block; /* Anzeige in einer Reihe */
-    margin-right: 10px; /* Abstand zwischen den Bildern */
+    margin-right: 20px; /* Abstand zwischen den Bildern */
 }
 
 .image-button img {
-    height: 300px; /* Höhe der Bilder festlegen */
-    width: 200px; /* Breite der Bilder festlegen */
     object-fit: cover; /* Stellt sicher, dass das Bild die Dimensionen füllt, ohne verzerrt zu werden */
 }
+
+.image-container {
+    position: relative; /* Setzt den Container als Referenz für die Positionierung der Kinder */
+    display: inline-block; /* Beibehaltung der Inline-Anzeige für das Scrollen */
+    margin-right: 20px; /* Abstand zwischen den Bildern */
+}
+
+.delete-button:hover {
+    background-color: gray; /* Farbe beim Überfahren mit der Maus ändern */
+}
+
+.delete-button {
+    position: absolute; /* Absolut innerhalb des image-container positioniert */
+    right: 30px; /* Abstand vom rechten Rand des Containers */
+    margin-top: 10px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10; /* Stellt sicher, dass der Button über dem Bild liegt */
+    transition: background-color 0.5s; /* Fügt eine sanfte Übergangsanimation hinzu */
+}
+

@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, jsonify
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField, StringField
 from werkzeug.utils import secure_filename
 import os
-import fitz  # Dieses Modul wird verwendet, um mit PDF-Dateien zu arbeiten
+import fitz  
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
@@ -67,6 +67,21 @@ def home():
 def show_pdf(file_name):
     file_path = file_name + '.pdf'
     return send_from_directory(app.config['UPLOAD_FOLDER'], file_path)
+
+@app.route('/delete/<file_name>')
+def delete_pdf(file_name):
+    pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name + '.pdf')
+    cover_path = os.path.join(app.config['COVER_FOLDER'], file_name + '.png')
+
+    try:
+        if os.path.exists(pdf_path):
+            os.remove(pdf_path)
+        if os.path.exists(cover_path):
+            os.remove(cover_path)
+        return jsonify({'status': 'success'}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)

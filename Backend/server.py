@@ -30,8 +30,6 @@ def home():
     upload_form = UploadFileForm()
     search_form = SearchForm()
 
-    # Dies verschiebt die Definition von images_to_pdfs in den oberen Teil der Funktion,
-    # sodass es immer definiert ist, unabhängig davon, welcher Codepfad ausgeführt wird.
     pdf_files = sort_files_by_date(app.config['UPLOAD_FOLDER'], '.pdf')
     images_to_pdfs = {img.replace('.pdf', '.png'): img for img in pdf_files}
 
@@ -58,15 +56,17 @@ def home():
             file_list = sort_files_by_date(app.config['UPLOAD_FOLDER'], '.pdf')
             files = [file for file in file_list if query in file.lower()]
 
-            return render_template('index.html', upload_form=upload_form, search_form=search_form, files=files, images_to_pdfs=images_to_pdfs)
-
-    # Dies stellt sicher, dass images_to_pdfs immer verfügbar ist, wenn das Template gerendert wird.
     return render_template('index.html', upload_form=upload_form, search_form=search_form, files=files, images_to_pdfs=images_to_pdfs)
 
 @app.route('/chat/<file_name>')
-def show_pdf(file_name):
-    file_path = file_name + '.pdf'
-    return send_from_directory(app.config['UPLOAD_FOLDER'], file_path)
+def chat_with_pdf(file_name):
+    # Überprüfen, ob die Datei im Upload-Verzeichnis vorhanden ist
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
+    if not os.path.exists(file_path):
+        return "Die angeforderte Datei wurde nicht gefunden", 404
+    
+    # Chat-PDF-HTML-Seite mit der PDF-Datei rendern
+    return render_template('chat_pdf.html', file_name=file_name)
 
 if __name__ == '__main__':
     app.run(debug=True)

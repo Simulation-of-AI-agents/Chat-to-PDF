@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>File Upload and Search</title>
 </head>
+
 <body>
     <h1>File Upload and Search</h1>
 
@@ -23,8 +25,7 @@
         <ul>
             {% for file in files %}
                 <li>
-                    <!-- Korrigiere das Argument 'filename' zu 'file_name' und entferne die Dateierweiterung -->
-                    <a href="{{ url_for('show_pdf', file_name=file.replace('.pdf', '')) }}">{{ file }}</a>
+                    <a href="{{ url_for('chat_with_pdf', file_name=file) }}">{{ file }}</a>
                 </li>
             {% endfor %}
         </ul>
@@ -32,15 +33,14 @@
         <p>No results found.</p>
     {% endif %}
 
-    <!-- Container für die Galerie mit horizontaler Scrollbar -->
-    <div class="gallery-container">
-        <div class="gallery">
-            {% for img, pdf in images_to_pdfs.items() %}
-                <a href="{{ url_for('show_pdf', file_name=pdf.replace('.pdf', '')) }}" class="image-button">
-                    <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}" style="height: 600px; width: 400px;">
-                </a>
-            {% endfor %}
-        </div>
+    <!-- Galerie mit den neuesten Dateien -->
+    <h2>Neueste Dateien:</h2>
+    <div class="gallery">
+        {% for img, pdf in images_to_pdfs.items() %}
+            <a href="{{ url_for('chat_with_pdf', file_name=pdf) }}">
+                <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}">
+            </a>
+        {% endfor %}
     </div>
 
     <!-- Formular zum Hochladen von Dateien -->
@@ -51,4 +51,5 @@
     </form>
 
 </body>
+
 </html>

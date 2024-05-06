@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/chat_styles.css')}}">
+        <title>Chat with PDF</title>
+    </head>
+    <body>
+        <a href="/">Back</a>
+        
+        <div class="container">
+            <div class="header">
+                <h1>Chat with your PDF</h1>
+            </div>
+            <div class="main-content">
+                <iframe class="PDF-view" src="{{ file_path }}.pdf#toolbar=0&navpanes=0&view=FitH" frameborder="0"></iframe>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='/scripts/script.js') }}"></script>
+    </body>
+</html>

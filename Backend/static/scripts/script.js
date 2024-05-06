@@ -22,3 +22,8 @@ $(document).ready(function() {
         });
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+});

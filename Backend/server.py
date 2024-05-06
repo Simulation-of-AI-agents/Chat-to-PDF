@@ -65,8 +65,8 @@ def home():
 
 @app.route('/chat/<file_name>')
 def show_pdf(file_name):
-    file_path = file_name + '.pdf'
-    return send_from_directory(app.config['UPLOAD_FOLDER'], file_path)
+    file_path = url_for('static', filename='files/' + file_name)
+    return render_template('chat.html', file_path=file_path)
 
 @app.route('/delete/<file_name>')
 def delete_pdf(file_name):

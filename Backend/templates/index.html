@@ -5,9 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Add your Flexbox styles here */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif; /* Use the Roboto font */
+            color: blue; /* Change text color to blue */
+        }
+
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px;
+            width: 100%;
+            justify-content: center; /* Center the gallery horizontally */
+        }
+
+        .gallery {
+            display: flex;
+        }
+
+        .image-button {
+            margin-right: 10px;
+            flex-shrink: 0; /* Prevent images from shrinking */
+        }
+
+        .image-button img {
+            height: 300px;
+            width: 200px;
+            object-fit: cover;
+        }
+
+        /* Style the file input and submit button */
+        input[type="file"], input[type="submit"] {
+            color: rgb(0, 98, 255); /* Change text color to blue */
+            font-family: 'Roboto', sans-serif; /* Use the Roboto font */
+            font-weight: bold;
+            background-color: transparent;
+            border: 2px solid rgb(43, 43, 47); /* Add border */
+            padding: 10px 20px; /* Add padding */
+            cursor: pointer; /* Change cursor on hover */
+            transition: all 0.3s ease; /* Add transition effect */
+            margin-top: 10px; /* Add top margin */
+        }
+
+        input[type="file"]:hover, input[type="submit"]:hover {
+            background-color: blue; /* Change background color on hover */
+            color: white; /* Change text color on hover */
+        }
+
+        /* Add styles for the logo */
+        .logo {
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+            margin-bottom: 20px; /* Add bottom margin */
+        }
+    </style>
     <title>File Upload and Search</title>
 </head>
 <body>
+    <img src="/Users/jonathannicoo/Downloads/Pdf_Logo_KI.jpg" alt="Logo" class="logo"> <!-- Add your logo here -->
+
     <h1>File Upload and Search</h1>
 
     <!-- Suchformular -->
@@ -23,7 +87,6 @@
         <ul>
             {% for file in files %}
                 <li>
-                    <!-- Korrigiere das Argument 'filename' zu 'file_name' und entferne die Dateierweiterung -->
                     <a href="{{ url_for('show_pdf', file_name=file.replace('.pdf', '')) }}">{{ file }}</a>
                 </li>
             {% endfor %}
@@ -37,7 +100,7 @@
         <div class="gallery">
             {% for img, pdf in images_to_pdfs.items() %}
                 <a href="{{ url_for('show_pdf', file_name=pdf.replace('.pdf', '')) }}" class="image-button">
-                    <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}" style="height: 600px; width: 400px;">
+                    <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}">
                 </a>
             {% endfor %}
         </div>
@@ -46,8 +109,8 @@
     <!-- Formular zum Hochladen von Dateien -->
     <form method="POST" enctype="multipart/form-data">
         {{ upload_form.hidden_tag() }}
-        {{ upload_form.file.label }}: <input type="file" name="{{ upload_form.file.name }}" accept="application/pdf">
-        {{ upload_form.submit() }}
+        <label for="file" class="blue-text">File</label>: <input type="file" name="{{ upload_form.file.name }}" id="file" accept="application/pdf">
+        <input type="submit" value="Upload File">
     </form>
 
 </body>

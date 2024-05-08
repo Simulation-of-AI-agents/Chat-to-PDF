@@ -1,34 +1,64 @@
 html, body {
     margin: 0;
     padding: 0;
+    width: 100%; /* Stellt sicher, dass der Körper die volle Breite einnimmt */
     height: 100vh; /* Setzt die Höhe auf die Höhe des Viewports */
-    overflow: hidden; /* Verhindert Scrollen auf der gesamten Seite */
+    display: flex; /* Verwendet Flexbox statt Grid für eine bessere Kontrolle über die Ausrichtung */
+    flex-direction: column; /* Richtet die Kinder-Elemente vertikal aus */
+    align-items: center; /* Zentriert Kinder horizontal */
+    background-color: #3c3c3c; /* Dunkelgrauer Hintergrund */
+    color: rgb(187, 187, 187); /* Hellgraue Textfarbe */
+    font-family: monospace; /* Monospace Schriftart */
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    width: 100%; /* Nutzt die volle Breite */
+    height: calc(100% - 20px); /* Subtrahiert den oberen Rand für den korrekten Abstand */
+    align-items: stretch; /* Streckt die Kinder, um die volle Breite zu nutzen */
+    padding: 10px 20px; /* Fügt Polsterung für alle Seiten hinzu */
 }
 
 .header {
-    padding: 20px;
+    padding: 10px;
+
+    text-align: center; /* Zentriert den Text der Überschrift */
 }
 
 .main-content {
     display: flex;
-    flex-grow: 1;
-    overflow: hidden; 
-    margin-bottom: 20px;
+    flex-grow: 1; /* Lässt main-content den verfügbaren Platz ausfüllen */
+    width: 100%; /* Stellt sicher, dass die Breite voll ausgenutzt wird */
+    overflow: hidden; /* Verhindert ungewolltes Scrollen */
+    align-items: center; /* Zentriert die Elemente vertikal */
+}
+
+.PDF-view, .chat-interface {
+    flex: 0 0 auto; /* Passt die Breitenanteile an */
+    height: 100%; /* Nutzt die gesamte verfügbare Höhe */
+    border: none;
+    padding: 0 20px; /* 20px Abstand links und rechts */
+    box-sizing: border-box; /* Beinhaltet Padding in der Breitenberechnung */
 }
 
 .PDF-view {
-    width: 45%;
-    height: calc(100% - 20px); /* Berechnet die Höhe, subtrahiert 20px vom Boden */
-    border: none;
-    margin-bottom: 20px; /* Fügt einen unteren Rand hinzu */
+    width: 60%; /* Breite auf 60% eingestellt */
 }
 
+.chat-interface {
+    width: 40%; /* Breite auf 40% eingestellt */
+}
+
+a {
+    color: rgb(187, 187, 187);
+    text-decoration: none;
+    background-color: transparent; /* Verhindert Hintergrundfarbänderungen */
+}
+
+a:hover, a:active, a:focus {
+    color: lightgray;
+    text-decoration: underline;
+    background-color: transparent; /* Stellt sicher, dass keine Hintergrundfarbe geändert wird */
+    outline: none; /* Entfernt Fokus-Umrisse */
+}

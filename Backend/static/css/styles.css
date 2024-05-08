@@ -12,10 +12,6 @@ h1, h2, h3, h4, h5, h6 {
     color: rgb(187, 187, 187);
 }
 
-h1 {
-    font-size: 60px;
-}
-
 a {
     color: rgb(187, 187, 187);/* Setzt die Textfarbe auf Weiß */
     text-decoration: none; /* Entfernt die Unterstreichung */

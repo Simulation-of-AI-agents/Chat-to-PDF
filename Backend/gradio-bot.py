@@ -2,7 +2,7 @@ import gradio as gr
 import random
 import time
 
-with gr.Blocks() as demo:
+with gr.Blocks(theme='gradio/monochrome') as demo:
     chatbot = gr.Chatbot()
     msg = gr.Textbox()
     clear = gr.Button("Clear")

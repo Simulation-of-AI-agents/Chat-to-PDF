@@ -32,7 +32,18 @@ html, body {
     width: 100%; /* Stellt sicher, dass die Breite voll ausgenutzt wird */
     overflow: hidden; /* Verhindert ungewolltes Scrollen */
     align-items: center; /* Zentriert die Elemente vertikal */
+
 }
+
+
+.button-container1 {
+    position:flex;
+    top: 20px; /* Anpassen der vertikalen Position */
+    right: 200px; /* Platziert den Button 20px vom rechten Rand entfernt */
+}
+
+
+
 
 .PDF-view, .chat-interface {
     flex: 0 0 auto; /* Passt die Breitenanteile an */
@@ -49,6 +60,14 @@ html, body {
 .chat-interface {
     width: 40%; /* Breite auf 40% eingestellt */
 }
+
+.button-container1 {
+    position: absolute;
+    top: 20px; /* Adjust the vertical position as needed */
+    right: 20px; /* Adjust the distance from the right edge */
+}
+
+
 
 a {
     color: rgb(187, 187, 187);

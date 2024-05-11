@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField, StringField
 from werkzeug.utils import secure_filename
 import os
-import fitz  
+import fitz
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'

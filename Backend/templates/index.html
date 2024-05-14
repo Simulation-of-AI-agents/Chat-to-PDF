@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
-    <title>File Upload and Search</title>
-</head>
-<body>
-    <h1>File Upload and Search</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+        <link rel="icon" type="image/png" href="{{url_for('static', filename='images/favicon-16x16.png')}}" sizes="16x16" />
+        <title>File Upload and Search</title>
+    </head>
+    <body>
+        <h1>File Upload and Search</h1>
 
-    <!-- Suchformular -->
-    <form method="POST">
-        {{ search_form.hidden_tag() }}
-        {{ search_form.query.label }}: {{ search_form.query() }}
-        {{ search_form.search_submit() }}
-    </form>
+        <!-- Suchformular -->
+        <form method="POST">
+            {{ search_form.hidden_tag() }}
+            {{ search_form.query.label }}: {{ search_form.query() }}
+            {{ search_form.search_submit() }}
+        </form>
 
-    <!-- Anzeige der Suchergebnisse -->
-    {% if files %}
-        <h2>Search Results:</h2>
-        <ul>
-            {% for file in files %}
-                <li>
-                    <!-- Korrigiere das Argument 'filename' zu 'file_name' und entferne die Dateierweiterung -->
-                    <a href="{{ url_for('show_pdf', file_name=file.replace('.pdf', '')) }}">{{ file }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No results found.</p>
-    {% endif %}
+        <!-- Anzeige der Suchergebnisse -->
+        {% if files %}
+            <h2>Search Results:</h2>
+            <ul>
+                {% for file in files %}
+                    <li>
+                        <!-- Korrigiere das Argument 'filename' zu 'file_name' und entferne die Dateierweiterung -->
+                        <a href="{{ url_for('show_pdf', file_name=file.replace('.pdf', '')) }}">{{ file }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
 
-    <!-- Container für die Galerie mit horizontaler Scrollbar -->
-    <div class="gallery-container">
-        <div class="gallery">
-            {% for img, pdf in images_to_pdfs.items() %}
-                <div class="image-container">
-                    <a href="{{ url_for('show_pdf', file_name=pdf.replace('.pdf', '')) }}" class="image-button">
-                        <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}" style="height: 300px; width: 200px;">
-                    </a>
-                    <!-- Löschen-Button über dem Bild -->
-                    <button class="delete-button" data-file-name="{{ pdf.replace('.pdf', '') }}">Delete</button>
-                </div>
-            {% endfor %}
+        <!-- Container für die Galerie mit horizontaler Scrollbar -->
+        <div class="gallery-container">
+            <div class="gallery">
+                {% for img, pdf in images_to_pdfs.items() %}
+                    <div class="image-container">
+                        <a href="{{ url_for('show_pdf', file_name=pdf.replace('.pdf', '')) }}" class="image-button">
+                            <img src="{{ url_for('static', filename='covers/' + img) }}" alt="Cover image of {{ pdf }}" style="height: 300px; width: 200px;">
+                        </a>
+                        <!-- Löschen-Button über dem Bild -->
+                        <button class="delete-button" data-file-name="{{ pdf.replace('.pdf', '') }}">Delete</button>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
 
-    <!-- JQuery einbinden -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Einbinden Ihrer externen script.js Datei -->
-    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+        <!-- JQuery einbinden -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Einbinden Ihrer externen script.js Datei -->
+        <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 
     <!-- Formular zum Hochladen von Dateien -->
     <form method="POST" enctype="multipart/form-data">

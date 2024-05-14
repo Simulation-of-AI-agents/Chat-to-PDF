@@ -23,7 +23,7 @@
             <div class="main-content">
                 <div class="iframe-container">
                     {% set file_name = file_path.split('/')[-1] %}
-                    <h1>PDF Datei: {{ file_name }}</h1>
+                    <h1>{{ file_name }}</h1>
                     <gradio-app src="https://mikamartin-pdf-chatbot.hf.space" :file-name="file_name"></gradio-app> 
                 </div>
             </div>          

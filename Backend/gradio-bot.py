@@ -44,16 +44,16 @@ with gr.Blocks(theme=theme, css=css) as demo:
         with gr.Column():
 
             pdf_base64 = load_pdf_to_base64(pdf_path)
-            pdf_html = f'<iframe src="{pdf_base64}" width="100%" height="750px" style="border:none;"></iframe>'
+            pdf_html = f'<iframe src="{pdf_base64}" width="100%" height="1000px" style="border:none;"></iframe>'
             extrated_text_list = extract_text_from_pdf(path_file=pdf_path)
             extracted_text = "".join(extrated_text_list)
             gr.HTML(value=pdf_html)
 
         with gr.Column():
             dropdown = gr.Dropdown(
-                ["GPT-4.0", "Mistral"], label="Model", info="Choose a LLM!"
+                ["GPT-4.0", "Mistral"], label="LLM"
             )
-            chatbot = gr.Chatbot()
+            chatbot = gr.Chatbot(height=635)
             msg = gr.Textbox()
             
             with gr.Row():

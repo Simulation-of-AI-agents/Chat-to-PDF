@@ -3,22 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no maximum-scale=1>">
         <link rel="stylesheet" href="{{url_for('static', filename='css/chat_styles.css')}}">
         <link rel="icon" type="image/png" href="{{url_for('static', filename='images/favicon-16x16.png')}}" sizes="16x16" />
         <title>Chat with PDF</title>
     </head>
     <body>
-        
+
         <div class="container">
             <div class="header">
-                <h1>Chat with your PDF</h1>
                 <a href="/">Back</a>
             </div>
+            
+            <script
+                type="module"
+                src="https://gradio.s3-us-west-2.amazonaws.com/4.31.0/gradio.js"
+            ></script>
+            
             <div class="main-content">
-                <iframe class="PDF-view" src="{{ file_path }}.pdf#toolbar=0&navpanes=0&view=FitH" frameborder="0"></iframe>
-                <iframe class="chat-interface" src="https://mikamartin-pdf-chatbot.hf.space" frameborder="0"></iframe>
-            </div>
+                <div class="iframe-container">
+                    {% set file_name = file_path.split('/')[-1] %}
+                    <h1>PDF Datei: {{ file_name }}</h1>
+                    <gradio-app src="https://mikamartin-pdf-chatbot.hf.space" :file-name="file_name"></gradio-app> 
+                </div>
+            </div>          
         </div>
         <script src="{{ url_for('static', filename='/scripts/script.js') }}"></script>
     </body>

@@ -9,13 +9,14 @@ html, body {
     background-color: #3c3c3c; /* Dunkelgrauer Hintergrund */
     color: rgb(187, 187, 187); /* Hellgraue Textfarbe */
     font-family: monospace; /* Monospace Schriftart */
+    zoom: 100%; /* Deaktiviert das Zoomen auf der Webseite */
 }
 
 .container {
     display: flex;
     flex-direction: column;
     width: 100%; /* Nutzt die volle Breite */
-    height: calc(100% - 20px); /* Subtrahiert den oberen Rand für den korrekten Abstand */
+    height: 100%;
     align-items: stretch; /* Streckt die Kinder, um die volle Breite zu nutzen */
     padding: 10px 20px; /* Fügt Polsterung für alle Seiten hinzu */
 }
@@ -34,26 +35,14 @@ html, body {
     align-items: center; /* Zentriert die Elemente vertikal */
 }
 
-.PDF-view, .chat-interface {
-    flex: 0 0 auto; /* Passt die Breitenanteile an */
-    height: 100%; /* Nutzt die gesamte verfügbare Höhe */
-    border: none;
-    padding: 0 20px; /* 20px Abstand links und rechts */
-    box-sizing: border-box; /* Beinhaltet Padding in der Breitenberechnung */
-}
-
-.PDF-view {
-    width: 60%; /* Breite auf 60% eingestellt */
-}
-
-.chat-interface {
-    width: 40%; /* Breite auf 40% eingestellt */
+.iframe-container {
+    width: 100%; /* Vollständige Breite des Browserfensters */
+    overflow: hidden; /* Verhindert, dass der Inhalt des Containers überläuft */
 }
 
 a {
     color: rgb(187, 187, 187);
     text-decoration: none;
-    background-color: transparent; /* Verhindert Hintergrundfarbänderungen */
 }
 
 a:hover, a:active, a:focus {

@@ -53,12 +53,11 @@
         <!-- Einbinden Ihrer externen script.js Datei -->
         <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 
-        <!-- Formular zum Hochladen von Dateien -->
-        <form method="POST" enctype="multipart/form-data">
-            {{ upload_form.hidden_tag() }}
-            {{ upload_form.file.label }}: <input type="file" name="{{ upload_form.file.name }}" accept="application/pdf">
-            {{ upload_form.submit() }}
-        </form>
-
-    </body>
+    <!-- Formular zum Hochladen von Dateien -->
+    <form method="POST" enctype="multipart/form-data">
+        {{ upload_form.hidden_tag() }}
+        {{ upload_form.file.label }}: <input type="file" name="{{ upload_form.file.name }}" accept="application/pdf">
+        {{ upload_form.submit() }}
+    </form>    
+</body>
 </html>

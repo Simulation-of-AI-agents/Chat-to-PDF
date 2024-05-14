@@ -1,29 +1,65 @@
 import gradio as gr
 import random
 import time
+import base64
+import PyPDF2
+from flask import request
 
-with gr.Blocks(theme='gradio/monochrome') as demo:
-    chatbot = gr.Chatbot()
-    msg = gr.Textbox()
-    clear = gr.Button("Clear")
-
-    def user(user_message, history):
-        return "", history + [[user_message, None]]
-
-    def bot(history):
-        bot_message = random.choice(["How are you?", "I love you", "I'm very hungry"])
-        history[-1][1] = ""
-        for character in bot_message:
-            history[-1][1] += character
-            time.sleep(0.05)
-            yield history
-
-    msg.submit(user, [msg, chatbot], [msg, chatbot], queue=False).then(
-        bot, chatbot, chatbot
-    )
-    clear.click(lambda: None, None, chatbot, queue=False)
+pdf_path = "Backend/static/files/Hello_World.pdf"
     
-demo.queue()
-demo.launch(share=True)
+def load_pdf_to_base64(pdf_path):
+    """Lädt ein PDF und konvertiert es in einen base64-String zur Einbettung in HTML."""
+    with open(pdf_path, "rb") as pdf_file:
+        pdf_base64 = base64.b64encode(pdf_file.read()).decode('utf-8')
+    return f"data:application/pdf;base64,{pdf_base64}"
 
-print("Hi")
+def respond(message, chat_history):
+    pdf_text = extract_text_from_pdf(path_file=pdf_path)
+    bot_message = pdf_text
+    chat_history.append((message, bot_message))
+    time.sleep(2)
+    return "", chat_history
+
+def extract_text_from_pdf(path_file: str):
+    with open(path_file, 'rb') as pdf:
+        reader = PyPDF2.PdfReader(pdf, strict=False)
+        pdf_text = []
+        
+        for page in reader.pages:
+            content = page.extract_text()
+            pdf_text.append(content)
+        
+        return "".join(pdf_text)
+
+theme = gr.themes.Monochrome(text_size="sm" ,primary_hue=gr.themes.colors.red, secondary_hue=gr.themes.colors.indigo, font=[gr.themes.GoogleFont("Inconsolata"), "Arial", "sans-serif"])
+
+css = """
+    .gradio-container {
+        background-color: #3c3c3c;
+    }
+"""
+
+with gr.Blocks(theme=theme, css=css) as demo:    
+    with gr.Row():
+        with gr.Column():
+
+            pdf_base64 = load_pdf_to_base64(pdf_path)
+            pdf_html = f'<iframe src="{pdf_base64}" width="100%" height="750px" style="border:none;"></iframe>'
+            extrated_text_list = extract_text_from_pdf(path_file=pdf_path)
+            extracted_text = "".join(extrated_text_list)
+            gr.HTML(value=pdf_html)
+
+        with gr.Column():
+            dropdown = gr.Dropdown(
+                ["GPT-4.0", "Mistral"], label="Model", info="Choose a LLM!"
+            )
+            chatbot = gr.Chatbot()
+            msg = gr.Textbox()
+            
+            with gr.Row():
+                download_json = gr.DownloadButton("Download JSON", visible=True)  # noch keine Funktionen
+                clear = gr.ClearButton([msg, chatbot])
+    
+    msg.submit(respond, [msg, chatbot], [msg, chatbot])
+
+demo.launch()

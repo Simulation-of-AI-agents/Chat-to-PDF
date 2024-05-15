@@ -10,20 +10,13 @@
     </head>
     <body>
 
-        <div class="container">
-            <div class="header">
-                <a href="/">Back</a>
-            </div>
-            
+        <div class="container">            
             <script
                 type="module"
                 src="https://gradio.s3-us-west-2.amazonaws.com/4.31.0/gradio.js"
             ></script>
-            
             <div class="main-content">
                 <div class="iframe-container">
-                    {% set file_name = file_path.split('/')[-1] %}
-                    <h1>{{ file_name }}</h1>
                     <gradio-app src="https://mikamartin-pdf-chatbot.hf.space" :file-name="file_name"></gradio-app> 
                 </div>
             </div>          

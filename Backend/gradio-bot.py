@@ -1,24 +1,19 @@
 import gradio as gr
-import random
 import time
 import base64
 import PyPDF2
-from flask import request
+from langchain_community.llms import Ollama
 
+
+# Initialisierung des LLM
+llm = Ollama(model="gemma:2b")
 pdf_path = "Backend/static/files/Hello_World.pdf"
-    
+
 def load_pdf_to_base64(pdf_path):
     """Lädt ein PDF und konvertiert es in einen base64-String zur Einbettung in HTML."""
     with open(pdf_path, "rb") as pdf_file:
         pdf_base64 = base64.b64encode(pdf_file.read()).decode('utf-8')
     return f"data:application/pdf;base64,{pdf_base64}"
-
-def respond(message, chat_history):
-    pdf_text = extract_text_from_pdf(path_file=pdf_path)
-    bot_message = pdf_text
-    chat_history.append((message, bot_message))
-    time.sleep(2)
-    return "", chat_history
 
 def extract_text_from_pdf(path_file: str):
     with open(path_file, 'rb') as pdf:
@@ -31,6 +26,15 @@ def extract_text_from_pdf(path_file: str):
         
         return "".join(pdf_text)
 
+def respond(message, chat_history):
+    # Anfrage an das LLM
+    bot_message = llm.invoke(message)
+    
+    # Chat-Historie aktualisieren
+    chat_history.append((message, bot_message))
+    
+    return "", chat_history
+
 theme = gr.themes.Monochrome(text_size="sm" ,primary_hue=gr.themes.colors.red, secondary_hue=gr.themes.colors.indigo, font=[gr.themes.GoogleFont("Inconsolata"), "Arial", "sans-serif"])
 
 css = """
@@ -42,18 +46,22 @@ css = """
 with gr.Blocks(theme=theme, css=css) as demo:    
     with gr.Row():
         with gr.Column():
-
+            
+            
             pdf_base64 = load_pdf_to_base64(pdf_path)
-            pdf_html = f'<iframe src="{pdf_base64}" width="100%" height="1000px" style="border:none;"></iframe>'
-            extrated_text_list = extract_text_from_pdf(path_file=pdf_path)
-            extracted_text = "".join(extrated_text_list)
+            pdf_html = f'<iframe src="{pdf_base64}" width="100%" height="853px" style="border:none;"></iframe>'
+            extracted_text = extract_text_from_pdf(path_file=pdf_path)
             gr.HTML(value=pdf_html)
-
+            
+            gr.Button(link="/", value="Back to PDF collection")
+            
         with gr.Column():
+
             dropdown = gr.Dropdown(
-                ["GPT-4.0", "Mistral"], label="LLM"
+                ["gemma:2b", "GPT4.0"], label="LLM", show_label=True, value="gemma:2b"
             )
-            chatbot = gr.Chatbot(height=635)
+            llm = Ollama(model=dropdown.value)
+            chatbot = gr.Chatbot(height=600)
             msg = gr.Textbox()
             
             with gr.Row():
@@ -62,4 +70,4 @@ with gr.Blocks(theme=theme, css=css) as demo:
     
     msg.submit(respond, [msg, chatbot], [msg, chatbot])
 
-demo.launch()
+demo.launch(share=True)

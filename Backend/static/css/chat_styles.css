@@ -18,12 +18,9 @@ html, body {
     width: 100%; /* Nutzt die volle Breite */
     height: 100%;
     align-items: stretch; /* Streckt die Kinder, um die volle Breite zu nutzen */
-    padding: 10px 20px; /* Fügt Polsterung für alle Seiten hinzu */
 }
 
 .header {
-    padding: 10px;
-
     text-align: center; /* Zentriert den Text der Überschrift */
 }
 

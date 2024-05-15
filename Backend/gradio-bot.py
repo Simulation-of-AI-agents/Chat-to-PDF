@@ -3,10 +3,13 @@ import time
 import base64
 import PyPDF2
 from langchain_community.llms import Ollama
-
+from langchain_core.prompts import ChatPromptTemplate
+import autogen
 
 # Initialisierung des LLM
 llm = Ollama(model="gemma:2b")
+
+
 pdf_path = "Backend/static/files/Hello_World.pdf"
 
 def load_pdf_to_base64(pdf_path):
@@ -27,8 +30,16 @@ def extract_text_from_pdf(path_file: str):
         return "".join(pdf_text)
 
 def respond(message, chat_history):
-    # Anfrage an das LLM
-    bot_message = llm.invoke(message)
+    pdf_text = extract_text_from_pdf(pdf_path)
+    
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", f"You are an expert about the topic from this extracted text from a PDF file: >>>{pdf_text}<<<"),
+        ("user", "{input}")
+    ])
+
+    chain = prompt | llm 
+    
+    bot_message = chain.invoke({"input": message})
     
     # Chat-Historie aktualisieren
     chat_history.append((message, bot_message))
@@ -70,4 +81,4 @@ with gr.Blocks(theme=theme, css=css) as demo:
     
     msg.submit(respond, [msg, chatbot], [msg, chatbot])
 
-demo.launch(share=True)
+demo.launch()

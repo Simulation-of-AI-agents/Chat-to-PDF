@@ -7,7 +7,7 @@ from langchain_community.llms import Ollama
 
 # Initialisierung des LLM
 llm = Ollama(model="gemma:2b")
-pdf_path = "Backend/static/files/Hello_World.pdf"
+pdf_path = "Backend/static/files/LLM.pdf"
 
 def load_pdf_to_base64(pdf_path):
     """Lädt ein PDF und konvertiert es in einen base64-String zur Einbettung in HTML."""

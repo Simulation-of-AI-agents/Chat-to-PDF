@@ -1,69 +1,99 @@
 body {
     display: grid;
     font-family: monospace;
-    place-items: center; /* Zentriert Inhalte sowohl horizontal als auch vertikal */
-    min-height: 100vh; /* Minimale Höhe auf 100% des Viewport */
-    margin: 0; /* Entfernt den Standardrand */
+    place-items: center;
+    min-height: 100vh;
+    margin: 0;
     background-color: #3c3c3c;
     color: rgb(187, 187, 187);
-  } 
+} 
 
 h1, h2, h3, h4, h5, h6 {
     color: rgb(187, 187, 187);
 }
 
 a {
-    color: rgb(187, 187, 187);/* Setzt die Textfarbe auf Weiß */
-    text-decoration: none; /* Entfernt die Unterstreichung */
+    color: rgb(187, 187, 187);
+    text-decoration: none;
 }
 
 a:hover {
-    color: lightgray; /* Farbe beim Überfahren mit der Maus ändern */
-    text-decoration: underline; /* Unterstreichung beim Hover hinzufügen */
+    color: lightgray;
+    text-decoration: underline;
 }
 
 .overlay-link {
     position: absolute;
     z-index: 1;
-    background: rgba(255, 255, 255, 0); /* Transparent */
+    background: rgba(255, 255, 255, 0);
 }
 
 .gallery-container {
-    overflow-x: auto; /* Ermöglicht horizontales Scrollen */
-    white-space: nowrap; /* Verhindert Umbrüche der Elemente */
-    padding: 10px; /* Optional: Fügt etwas Abstand im Inneren des Containers hinzu */
-    width: 80%; /* Breite des Containers auf volle Breite des Elternelements */
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    width: 80%;
 }
 
 .image-button {
-    display: inline-block; /* Anzeige in einer Reihe */
-    margin-right: 20px; /* Abstand zwischen den Bildern */
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .image-button img {
-    object-fit: cover; /* Stellt sicher, dass das Bild die Dimensionen füllt, ohne verzerrt zu werden */
+    object-fit: cover;
 }
 
 .image-container {
-    position: relative; /* Setzt den Container als Referenz für die Positionierung der Kinder */
-    display: inline-block; /* Beibehaltung der Inline-Anzeige für das Scrollen */
-    margin-right: 20px; /* Abstand zwischen den Bildern */
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .delete-button:hover {
-    background-color: gray; /* Farbe beim Überfahren mit der Maus ändern */
+    background-color: gray;
 }
 
 .delete-button {
-    position: absolute; /* Absolut innerhalb des image-container positioniert */
-    right: 30px; /* Abstand vom rechten Rand des Containers */
+    position: absolute;
+    right: 30px;
     margin-top: 10px;
     padding: 5px 10px;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 10; /* Stellt sicher, dass der Button über dem Bild liegt */
-    transition: background-color 0.5s; /* Fügt eine sanfte Übergangsanimation hinzu */
+    z-index: 10;
+    transition: background-color 0.5s;
 }
 
+.upload-container {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #3c3c3c;
+    color: rgb(187, 187, 187);
+    border: 2px dashed rgb(187, 187, 187);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.upload-container.dragover {
+    background-color: #5c5c5c;
+    border-color: gray; /* Ändere die Randfarbe beim Überfahren */
+}
+
+button, .delete-button {
+    background-color: #3c3c3c;
+    color: rgb(187, 187, 187);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}

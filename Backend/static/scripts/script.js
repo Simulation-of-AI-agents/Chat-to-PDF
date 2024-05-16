@@ -27,3 +27,57 @@ $(document).ready(function() {
 document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('contextmenu', event => event.preventDefault());
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var uploadContainer = document.getElementById('upload-container');
+    var fileInput = document.getElementById('file-input');
+
+    uploadContainer.addEventListener('click', function() {
+        fileInput.click();
+    });
+
+    uploadContainer.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        uploadContainer.classList.add('dragover');
+    });
+
+    uploadContainer.addEventListener('dragleave', function() {
+        uploadContainer.classList.remove('dragover');
+    });
+
+    uploadContainer.addEventListener('drop', function(e) {
+        e.preventDefault();
+        uploadContainer.classList.remove('dragover');
+        var files = e.dataTransfer.files;
+        handleFiles(files);
+    });
+
+    fileInput.addEventListener('change', function() {
+        var files = fileInput.files;
+        handleFiles(files);
+    });
+
+    function handleFiles(files) {
+        if (files.length > 0) {
+            var formData = new FormData();
+            formData.append('file', files[0]);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.reload();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while uploading the file.');
+            });
+        }
+    }
+});

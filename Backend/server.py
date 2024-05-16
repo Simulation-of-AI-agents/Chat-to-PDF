@@ -30,8 +30,6 @@ def home():
     upload_form = UploadFileForm()
     search_form = SearchForm()
 
-    # Dies verschiebt die Definition von images_to_pdfs in den oberen Teil der Funktion,
-    # sodass es immer definiert ist, unabhängig davon, welcher Codepfad ausgeführt wird.
     pdf_files = sort_files_by_date(app.config['UPLOAD_FOLDER'], '.pdf')
     images_to_pdfs = {img.replace('.pdf', '.png'): img for img in pdf_files}
 
@@ -60,7 +58,6 @@ def home():
 
             return render_template('index.html', upload_form=upload_form, search_form=search_form, files=files, images_to_pdfs=images_to_pdfs)
 
-    # Dies stellt sicher, dass images_to_pdfs immer verfügbar ist, wenn das Template gerendert wird.
     return render_template('index.html', upload_form=upload_form, search_form=search_form, files=files, images_to_pdfs=images_to_pdfs)
 
 @app.route('/chat/<file_name>')
@@ -82,6 +79,31 @@ def delete_pdf(file_name):
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No file part'}), 400
+
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No selected file'}), 400
+
+    if file and file.filename.endswith('.pdf'):
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(file_path)
+
+        # Verarbeite das PDF, um ein Vorschaubild zu erstellen
+        doc = fitz.open(file_path)
+        page = doc.load_page(0)  # erste Seite
+        pix = page.get_pixmap()
+        cover_path = os.path.join(app.config['COVER_FOLDER'], os.path.splitext(filename)[0] + '.png')
+        pix.save(cover_path)
+        doc.close()
+
+        return jsonify({'status': 'success'}), 200
+
+    return jsonify({'status': 'error', 'message': 'Invalid file type'}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)

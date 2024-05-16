@@ -8,13 +8,9 @@ import autogen
 
 # Initialisierung des LLM
 llm = Ollama(model="gemma:2b")
-<<<<<<< HEAD
+
 pdf_path = "Backend/static/files/LLM.pdf"
-=======
 
-
-pdf_path = "Backend/static/files/Hello_World.pdf"
->>>>>>> refs/remotes/origin/main
 
 def load_pdf_to_base64(pdf_path):
     """Lädt ein PDF und konvertiert es in einen base64-String zur Einbettung in HTML."""

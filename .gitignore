@@ -1,4 +1,2 @@
-venv-ai-agents/
-.cache/41
-.cache/
+gradio-venv/
 *.secret

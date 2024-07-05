@@ -124,11 +124,11 @@ http://127.0.0.1:7860/
 
 ### Features
 
-- **PDF Text Extraction:** Efficiently processes and extracts text from PDFs, including handling encrypted files.
-- **Interactive Chatbot:** Enables natural language interaction with PDF contents through advanced language models.
-- **JSON Export:** Provides a convenient way to download extracted information.
+- **PDF Text Extraction:** Efficiently processes and extracts text from PDFs, including handling encrypted files using PyPDF2 lib.
+- **Interactive Chatbot:** Enables natural language interaction with PDF contents through LLM.
+- **JSON Export:** Provides an option to download extracted sustainability data from the PDF.
 - **PDF Dropdown Menu:** Allows users to switch between multiple uploaded PDFs easily via a dropdown menu.
-- **LLM Dropdown Menu:** Provides an interface to select different language models for processing, enhancing flexibility and performance.
+- **LLM Dropdown Menu:** Allows users to switch between multiple uploaded LLMs easily via a dropdown menu.
 
 ### Development Process
 

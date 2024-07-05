@@ -113,6 +113,10 @@ http://127.0.0.1:7860/
 - After processing a PDF, click the "Download JSON" button to download the extracted information in JSON format.
 - The generated JSON files for the Sustainability Reports are located in the `extract` folder.
 
+### Demo Video
+![Demo Video](videos/)
+
+
 ---
 
 ## Project Review

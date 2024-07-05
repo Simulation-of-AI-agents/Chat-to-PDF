@@ -161,3 +161,7 @@ The project evolved through several phases:
 ---
 
 If you encounter issues or have questions, feel free to contact us via the issue tracker on the repository.
+
+---
+
+*Your three musketeers — Jonathan, Walid, and Mika — wish you endless enjoyment with YOLOPDF!*

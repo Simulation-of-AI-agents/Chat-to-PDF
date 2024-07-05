@@ -115,7 +115,7 @@ http://127.0.0.1:7860/
 
 ### Demo Video
 
-***Demo Video can be found at*** *`Chat-to-PDF/videos/demo_airbus.mp4`*
+***Demo Video can be found at*** `Chat-to-PDF/videos/demo_airbus.mp4`
 
 
 ---

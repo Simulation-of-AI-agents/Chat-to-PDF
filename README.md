@@ -64,8 +64,8 @@ These models are initialized with the `ChatOpenAI` class from the `langchain_ope
 
 2. **Clone the repository**
    ```bash
-   git clone https://github.com/username/yolopdf.git
-   cd yolopdf
+   git clone https://github.com/Simulation-of-AI-agents/Chat-to-PDF.git
+   cd Chat-to-PDF
    ```
 
 3. **Configure API Key**

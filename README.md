@@ -1,8 +1,6 @@
-Here's the updated ReadMe for your YOLOPDF project, reflecting your latest requirements:
-
 ---
 
-# YOLOPDF - PDF Chatbot
+# YOLOPDF - A PDF Chatbot
 
 YOLOPDF is a project developed by Jonathan, Walid, and Mika for the "Simulation of AI Agents" class. This project demonstrates how AI can interact with PDF documents, extract relevant information, and facilitate user interaction through a chatbot interface.
 
@@ -18,7 +16,6 @@ YOLOPDF is a project developed by Jonathan, Walid, and Mika for the "Simulation 
 3. [Usage Instructions](#usage-instructions)
    - [Uploading and Processing PDFs](#uploading-and-processing-pdfs)
    - [Downloading JSON](#downloading-json)
-   - [Screenshots](#screenshots)
 4. [Project Review](#project-review)
    - [Features](#features)
    - [Development Process](#development-process)
@@ -53,16 +50,18 @@ These models are initialized with the `ChatOpenAI` class from the `langchain_ope
 
 ### Architecture Screenshot
 
-_Include a screenshot of the architecture here_
+![Architecture Screenshot](screenshots/architecture_screenshot.png)
+
 
 ---
 
 ## Deployment Guide
 
 1. **Prerequisites**
-   - Python 3.8 or higher
-   - Required Python libraries: `os`, `gradio`, `PyPDF2`, `configparser`, `base64`, `warnings`, `json`, `langchain_openai`, `langchain_huggingface`, `langchain_community.vectorstores`
-   - Install the required libraries using `pip install -r requirements.txt`.
+   - Install the required libraries using:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 2. **Clone the repository**
    ```bash
@@ -80,10 +79,15 @@ _Include a screenshot of the architecture here_
 
 4. **Start the application**
    ```bash
-   python yolopdf.py
+   python gradio-app.py
    ```
 
-The Gradio interface will start locally and can be accessed through a web browser.
+
+The Gradio interface will start locally and can be accessed through a web browser on port:
+
+```bash
+http://127.0.0.1:7860/
+```
 
 ---
 
@@ -107,16 +111,6 @@ The Gradio interface will start locally and can be accessed through a web browse
 
 - After processing a PDF, click the "Download JSON" button to download the extracted information in JSON format.
 - The generated JSON files for the Sustainability Reports are located in the `extract` folder.
-
-### Screenshots
-
-**Uploading and Selecting PDF**
-
-![PDF Upload](screenshots/pdf_upload.png)
-
-**Chat Interface**
-
-![Chat Interface](screenshots/chat_interface.png)
 
 ---
 

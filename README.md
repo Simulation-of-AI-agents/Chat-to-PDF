@@ -79,7 +79,7 @@ These models are initialized with the `ChatOpenAI` class from the `langchain_ope
 
 4. **Run the application**
    ```bash
-   gradio-app.py
+   python Chatbot/gradio-app.py
    ```
 
 The Gradio interface will start locally and can be accessed through a web browser on port:

@@ -146,9 +146,11 @@ The project evolved through several phases:
 
 ## Course Improvement Suggestions
 
-1. **More Practical Assignments:** Including more practical assignments focused on specific aspects of AI simulation would lead to better learning outcomes.
-2. **Extended Deadlines for Complex Projects:** More time for complex projects like this would help students delve deeper into the subject matter.
-3. **Collaborative Workshops:** Workshops where students collaborate and solve common problems would improve the learning experience.
+**1. Unlimited Access to LLM and Embedding API:** Having unlimited access to Language Models (LLMs) and Embedding APIs would really speed up our development process and make our final product even better.
+
+**2. Milestones:** The milestones we set and our milestone meetings were super helpful in keeping us on track. You should definitely keep doing this. It keeps everyone focused and ensures that the students making steady progress.
+
+**3. Guided Instructional Course:** The course guided by Ricardo and Debayan was very helpful and we learned a lot about RAG and LLM implementation. It made sure everyone had the know-how to build our chatbot successfully.
 
 ---
 

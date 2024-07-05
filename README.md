@@ -20,7 +20,7 @@ YOLOPDF is a project developed by Jonathan, Walid, and Mika for the "Simulation 
 4. [Project Review](#project-review)
    - [Features](#features)
    - [Development Process](#development-process)
-5. [Course Improvement Suggestions](#course-improvement-suggestions)
+5. [Course Reflection](#course-reflection)
 6. [Additional Notes](#additional-notes)
 
 ---
@@ -150,7 +150,7 @@ The project evolved through several phases:
 
 ---
 
-## Course Improvement Suggestions
+## Course Reflection
 
 **1. Unlimited Access to LLM and Embedding API:** Having unlimited access to Language Models (LLMs) and Embedding APIs would really speed up our development process and make our final product even better.
 

@@ -144,7 +144,6 @@ The project evolved through several phases:
 ## Additional Notes
 
 - **Browser Recommendation:** Use Firefox or Safari, as larger PDFs may not display correctly in Chrome.
-- **JSON Files:** The generated JSON files for the Sustainability Reports are located in the `extract` folder.
 
 ---
 

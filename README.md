@@ -114,7 +114,7 @@ http://127.0.0.1:7860/
 - The generated JSON files for the Sustainability Reports are located in the `extract` folder.
 
 ### Demo Video
-![Demo Video](videos/demo_airbus.mov)
+![Demo Video](videos/demo_airbus.mp4)
 
 
 ---

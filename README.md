@@ -52,7 +52,6 @@ These models are initialized with the `ChatOpenAI` class from the `langchain_ope
 
 ![Architecture Screenshot](Images/architecture.png)
 
-
 ---
 
 ## Deployment Guide

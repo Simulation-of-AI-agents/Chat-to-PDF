@@ -128,10 +128,15 @@ http://127.0.0.1:7860/
 
 The project evolved through several phases:
 
-1. **Initial Setup:** Basic integration with `gradio` and building the PDF processing pipeline.
-2. **LLM Integration:** Experimenting with different LLMs to find the best solution for text extraction and response generation.
-3. **UI/UX Enhancements:** Improving the user interface with features like file upload, dropdown menus, and JSON export.
-4. **Optimization:** Fine-tuning chunk sizes and embedding strategies to enhance performance and accuracy.
+1. Initial Setup: Initially, we set up basic integration with Flask and Gradio to develop the PDF processing pipeline. Originally, we planned to integrate Gradio into our Flask server but encountered difficulties in transferring data between Flask and Gradio. Therefore, we opted to exclusively use Gradio for our application.
+
+2. LLM Integration: Next, we experimented with different Language Models (LLMs) to determine the optimal solution for text extraction and response generation. We evaluated the performance of each model using a test scenario based on the Airbus Sustainability Report.
+
+3. UI/UX Enhancements: To enhance user experience, we expanded the user interface features. This included functionalities such as file upload for PDFs, dropdown menus for selecting LLMs, and the ability to export results as JSON. These enhancements were directly implemented within the Gradio application.
+
+4. Optimization: A critical step involved fine-tuning chunk sizes and embedding strategies to maximize performance and accuracy. Based on our experiments with the Airbus Sustainability Report, we determined the optimal chunk sizes for each LLM, which were implemented in the gradio-app.py.
+
+5. JSON Prompt Optimization: During the optimization of JSON prompts, we made iterative improvements. By gradually refining the prompts, we aimed to ensure that the extracted data from PDFs were accurately and reliably transformed into the JSON format.
 
 ---
 

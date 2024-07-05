@@ -16,6 +16,7 @@ YOLOPDF is a project developed by Jonathan, Walid, and Mika for the "Simulation 
 3. [Usage Instructions](#usage-instructions)
    - [Uploading and Processing PDFs](#uploading-and-processing-pdfs)
    - [Downloading JSON](#downloading-json)
+   - [Demo Video](#demo-video)
 4. [Project Review](#project-review)
    - [Features](#features)
    - [Development Process](#development-process)

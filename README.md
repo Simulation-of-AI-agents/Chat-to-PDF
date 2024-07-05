@@ -77,9 +77,9 @@ These models are initialized with the `ChatOpenAI` class from the `langchain_ope
      API_KEY=your_openai_api_key
      ```
 
-4. **Start the application**
+4. **Run the application**
    ```bash
-   python gradio-app.py
+   gradio-app.py
    ```
 
 The Gradio interface will start locally and can be accessed through a web browser on port:

@@ -28,11 +28,13 @@ YOLOPDF is a project developed by Jonathan, Walid, and Mika for the "Simulation 
 
 ### Components
 
+
 1. **Frontend (Gradio Interface)**
    - **PDF Viewer:** Displays the uploaded PDF within an HTML-iFrame.
    - **Chatbot Interface:** Provides a chat interface for user interaction with the PDF content.
    - **Model Selection:** Allows the selection of different language models (LLMs).
    - **File Upload and JSON Download:** Facilitates uploading PDFs and downloading extracted information in JSON format.
+
 
 2. **Backend**
    - **PDF Processing:** Extracts text from uploaded PDFs and splits it into chunks.
@@ -40,17 +42,23 @@ YOLOPDF is a project developed by Jonathan, Walid, and Mika for the "Simulation 
    - **Vector Store:** Uses FAISS to store and retrieve text embeddings.
    - **Chat History:** Saves and loads chat history in JSON files.
 
+
 ### Language Models Used
+
 
 1. **mixtral-8x7b-instruct**
 2. **meta-llama-3-70b-instruct**
 3. **qwen1.5-72b-chat**
 
+
 These models are initialized with the `ChatOpenAI` class from the `langchain_openai` library and are optimized for tasks such as text extraction and question answering.
+
 
 ### Architecture Screenshot
 
+
 ![Architecture Screenshot](Images/architecture.png)
+
 
 ---
 

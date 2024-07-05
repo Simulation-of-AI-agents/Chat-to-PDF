@@ -88,6 +88,8 @@ The Gradio interface will start locally and can be accessed through a web browse
 http://127.0.0.1:7860/
 ```
 
+- ***Browser Recommendation:*** *Use Firefox or Safari, as larger PDFs may not display correctly in Chrome.*
+
 ---
 
 ## Usage Instructions
@@ -139,12 +141,6 @@ The project evolved through several phases:
 1. **More Practical Assignments:** Including more practical assignments focused on specific aspects of AI simulation would lead to better learning outcomes.
 2. **Extended Deadlines for Complex Projects:** More time for complex projects like this would help students delve deeper into the subject matter.
 3. **Collaborative Workshops:** Workshops where students collaborate and solve common problems would improve the learning experience.
-
----
-
-## Additional Notes
-
-- **Browser Recommendation:** Use Firefox or Safari, as larger PDFs may not display correctly in Chrome.
 
 ---
 

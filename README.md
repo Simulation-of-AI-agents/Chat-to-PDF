@@ -50,7 +50,7 @@ These models are initialized with the `ChatOpenAI` class from the `langchain_ope
 
 ### Architecture Screenshot
 
-![Architecture Screenshot](screenshots/architecture_screenshot.png)
+![Architecture Screenshot](images/architecture.png)
 
 
 ---
